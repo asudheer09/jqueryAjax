@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			$.ajax({
+				type : 'GET',
+				url : 'http://jsonplaceholder.typicode.com/photos',
+				//data: { get_param: 'value' }, 
+				dataType : 'json',
+				success : function(photos) {
+					//alert(photos);
+					$.each(photos, function(index, photo) {
+						$("#dataList").append("<li>" + photo.title + "</li>");
+					});
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<button> Make Ajax request</button>
+<ul id="dataList">
+
+</ul>
+</body>
+</html>
